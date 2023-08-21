@@ -3,7 +3,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>DJANGO CHAT</title>
+
+
+        <title>{%block title%}  {%endblock%}   DJANGO CHAT</title>
 
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
@@ -19,5 +21,8 @@
                 <a href="/signup/" class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700">Sign Up</a>
             </div>
         </nav>
+
+        {%block content%}
+        {%endblock%}
     </body>
 </html>
