@@ -3,7 +3,5 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', include('core.urls')),
-    path('admin', admin.site.urls),
-
+    path('', views.frontpage, name='frontpage'),
 ]
