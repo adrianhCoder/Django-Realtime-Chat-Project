@@ -17,7 +17,6 @@ def signup(request):
 
             login(request, user)
             return redirect('frontpage')
-
     else:
         form = SignUpForm()
         return render(request, 'core/signup.html', {'form': form})
