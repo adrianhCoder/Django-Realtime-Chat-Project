@@ -35,9 +35,10 @@
 </div>
 {% endblock %}
 
-{{ room.slug|json_script:"json-roomname" }}
 
-{%block script%}
+
+{%block scripts %}
+{{ room.slug|json_script:"json-roomname" }}
 <script> 
     const roomName = JSON.parse(document.getElementById('json-roomname').textContent);
    
@@ -49,12 +50,22 @@
         + '/'
     );
 
+    if (chatSocket.readyState === WebSocket.OPEN) {
+        console.log('La conexión WebSocket está abierta.');
+        // Realiza acciones específicas si la conexión está abierta
+    }
+
     chatSocket.onmessage = function(e) {
-        console.log('onmessage')
+        console.log('mensajeee')
     }
 
     chatSocket.onclose = function(e) {
-        console.log('onclose')
+        console.log('cerradoooo')
+    }
+
+    chatSocket.onerror = function(event) {
+        console.error('Error en la conexión WebSocket:', event);
+        // Realiza acciones de recuperación o notifica al usuario sobre el error
     }
 
 </script>
