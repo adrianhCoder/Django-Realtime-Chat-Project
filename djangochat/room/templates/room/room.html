@@ -54,9 +54,11 @@
 
     chatSocket.onmessage = function(e) {
         const data = JSON.parse(e.data);
-
+        scrollToBottom();
         if (data.message) {
+            
             console.log("asdsa");
+          
 
             let html = '<div class="p-4 bg-gray-200 rounded-xl">';
                 html += '<p class="font-semibold">' + data. username + '</p>'; 
@@ -64,6 +66,8 @@
 
             console.log("mensajee");
             document.querySelector('#chat-messages').innerHTML += html;
+
+            scrollToBottom();
         } else {
             alert('The message was empty!')
         }
@@ -103,5 +107,12 @@
 
         return false
     };
+
+    function scrollToBottom() {
+        let objDiv = document.getElementById("chat-messages");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+
+    scrollToBottom();
 </script>
 {%endblock%}
