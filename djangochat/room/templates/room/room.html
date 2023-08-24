@@ -59,8 +59,23 @@
     }
 
     chatSocket.onmessage = function(e) {
-        console.log('mensajeee')
-    }
+        const data = JSON.parse(e.data);
+
+        if (data.message) {
+            console.log("asdsa");
+
+            let html = '<div class="p-4 bg-gray-200 rounded-xl">';
+                html += '<p class="font-semibold">' + data. username + '</p>'; 
+                html += '<p>' + data.message + '</p></div>';         
+
+            console.log("mensajee");
+            document.querySelector('#chat-messages').innerHTML += html;
+        } else {
+            alert('The message was empty!')
+        }
+
+      
+    };
 
     chatSocket.onclose = function(e) {
         console.log('cerradoooo')
@@ -84,7 +99,7 @@
             'room': roomName
         })
 
-        chatSocket.send(JSON.stringify({
+        chatSocket.send(JSON.stringify({ // here we send the message to the backend
             'message': message,
             'username': userName,
             'room': roomName
